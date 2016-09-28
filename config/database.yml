@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+  host: localhost
+
+development:
+  <<: *default
+  database: optical_agent_development
+
+test:
+  <<: *default
+  database: optical_agent_test
+
+production:
+  <<: *default
+  database: optical_agent_production
+  username: optical_agent
+  password: <%= ENV['OPTICAL_AGENT_DATABASE_PASSWORD'] %>
